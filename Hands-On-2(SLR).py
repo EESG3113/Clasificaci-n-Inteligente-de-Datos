@@ -3,16 +3,18 @@ import sys
 class SimpleLinearRegression:
     def __init__(self):
         # Dataset hardcoded
+        
+
         self.data = [
-            {"Year": 1, "Sales": 651, "Advertising": 23},
-            {"Year": 2, "Sales": 762, "Advertising": 26},
-            {"Year": 3, "Sales": 856, "Advertising": 30},
-            {"Year": 4, "Sales": 1063, "Advertising": 34},
-            {"Year": 5, "Sales": 1190, "Advertising": 43},
-            {"Year": 6, "Sales": 1298, "Advertising": 48},
-            {"Year": 7, "Sales": 1421, "Advertising": 52},
-            {"Year": 8, "Sales": 1440, "Advertising": 57},
-            {"Year": 9, "Sales": 1518, "Advertising": 58}
+            {"X": 1, "Y": 2},
+            {"X": 2, "Y": 4},
+            {"X": 3, "Y": 6},
+            {"X": 4, "Y": 8},
+            {"X": 5, "Y": 10},
+            {"X": 6, "Y": 12},
+            {"X": 7, "Y": 14},
+            {"X": 8, "Y": 16},
+            {"X": 9, "Y": 18}
         ]
         
         # Inicializar los coeficientes de la regresión
@@ -22,10 +24,10 @@ class SimpleLinearRegression:
     def fit(self):
         # Calcular los valores de beta_0 y beta_1 usando el dataset
         n = len(self.data)
-        sum_x = sum(d["Advertising"] for d in self.data)
-        sum_y = sum(d["Sales"] for d in self.data)
-        sum_xy = sum(d["Advertising"] * d["Sales"] for d in self.data)
-        sum_x_squared = sum(d["Advertising"] ** 2 for d in self.data)
+        sum_x = sum(d["X"] for d in self.data)
+        sum_y = sum(d["Y"] for d in self.data)
+        sum_xy = sum(d["X"] * d["Y"] for d in self.data)
+        sum_x_squared = sum(d["X"] ** 2 for d in self.data)
         
         # Fórmulas para beta_1 y beta_0
         self.beta_1 = (n * sum_xy - sum_x * sum_y) / (n * sum_x_squared - sum_x ** 2)
